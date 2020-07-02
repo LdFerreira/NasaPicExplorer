@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import githubBackground from '../assets/fundo.svg';
 
 export default createGlobalStyle`
   * {

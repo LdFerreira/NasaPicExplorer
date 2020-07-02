@@ -18,6 +18,7 @@
     "@types/styled-components": "^5.1.0",
     "axios": "^0.19.2",
     "date-fns": "^2.14.0",
+    "moment": "^2.27.0",
     "polished": "^3.6.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

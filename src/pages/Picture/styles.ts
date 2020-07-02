@@ -25,13 +25,15 @@ export const RepositoryInfo = styled.section`
   margin-top: 80px;
 
   header {
-    display: flex;
+    display: block;
     align-items: center;
-
+    justify-content: center;
+    flex: 1;
     img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
+      width: 100%;
+      height: 500px;
+      border-radius: 20px;
+      margin-left: 24px;
     }
 
     div {
@@ -54,7 +56,7 @@ export const RepositoryInfo = styled.section`
     display: flex;
     list-style: none;
     margin-top: 40px;
-
+    margin-left: 24px;
     li {
       & + li {
         margin-left: 80px;
@@ -72,46 +74,46 @@ export const RepositoryInfo = styled.section`
   }
 `;
 
-export const Issues = styled.div`
-  margin-top: 80px;
+// export const Issues = styled.div`
+//   margin-top: 80px;
 
-  a {
-    background: #fff;
-    border-radius: 5px;
-    width: 100%;
-    padding: 24px;
-    display: block;
-    text-decoration: none;
+//   a {
+//     background: #fff;
+//     border-radius: 5px;
+//     width: 100%;
+//     padding: 24px;
+//     display: block;
+//     text-decoration: none;
 
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    transition: transform 0.2s;
-    & + a {
-      margin-top: 16px;
-    }
-    &:hover {
-      transform: translateX(10px);
-    }
+//     display: flex;
+//     align-items: center;
+//     text-decoration: none;
+//     transition: transform 0.2s;
+//     & + a {
+//       margin-top: 16px;
+//     }
+//     &:hover {
+//       transform: translateX(10px);
+//     }
 
-    div {
-      margin: 0 16px;
-      flex: 1;
-      strong {
-        font-size: 20px;
-        color: #3d3d4d;
-      }
+//     div {
+//       margin: 0 16px;
+//       flex: 1;
+//       strong {
+//         font-size: 20px;
+//         color: #3d3d4d;
+//       }
 
-      p {
-        font-size: 18px;
-        color: #a8a8b3;
-        margin-top: 4px;
-      }
-    }
+//       p {
+//         font-size: 18px;
+//         color: #a8a8b3;
+//         margin-top: 4px;
+//       }
+//     }
 
-    svg {
-      margin-left: auto;
-      color: #cbcbd6;
-    }
-  }
-`;
+//     svg {
+//       margin-left: auto;
+//       color: #cbcbd6;
+//     }
+//   }
+// `;
