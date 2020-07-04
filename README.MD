@@ -4,51 +4,40 @@
 
 ### :books: Tecnologias usadas
 
-✅ React
+✔️ React
 
+✔️ Typescript
 
+✔️ LocalStorage
 
-✅ Typescript
+✔️ Styled-components
 
+✔️ React-hooks
 
+✔️ Axios
 
-✅ LocalStorage
+✔️ Eslint
 
-
-
-✅ Styled-components
-
-
-
-✅ React-hooks
-
-
-
-✅ Axios
-
-
-
-✅ Eslint
-
-
-
-✅ Prettier
+✔️ Prettier
 
 
 
 ### :rocket: Projeto
 
-**Github Explorer** é uma aplicação feita em **ReactJS e typescript**, que usa a API da NASA, para adicionar fotos que NASA tirou naquele dia em exato, e ver algumas curiosidades.
+**NASA Explorer** é uma aplicação feita em **ReactJS e typescript**, que usa a API da NASA, para adicionar fotos que NASA tirou naquele dia em exato, e ver algumas curiosidades.
 
-
-
+### :rocket: Confira a aplicação online
+```bash
+https://nasaexplorer.netlify.app/
+```
 ### :mortar_board: Instruções
+
 
 **Clone** the repository
 
 ```bash
 
-git clone https://github.com/LdFerreira/github-explorer.git
+git clone https://github.com/LdFerreira/NasaPicExplorer
 
 ```
 
