@@ -97,17 +97,15 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      {showingModalEdit ? (
+      {showingModalEdit && (
         <ModalForm
           showModal={showingModalEdit}
           editButton={(data: boolean, picture: Picture) =>
-            handleEditPicture(data, dataPicture)
+            handleEditPicture(data, picture)
           }
           picture={dataPicture}
           setPictures={(picture: Array<Picture>) => setPictures(picture)}
         />
-      ) : (
-        ''
       )}
 
       <Container>
