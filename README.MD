@@ -38,7 +38,7 @@
 
 ### :rocket: Projeto
 
-**Github Explorer** é uma aplicação feita em **ReactJS e typescript**, que usa a API do Github, para adicionar repositórios, ver alguns dados como Issues, forks, stars.
+**Github Explorer** é uma aplicação feita em **ReactJS e typescript**, que usa a API da NASA, para adicionar fotos que NASA tirou naquele dia em exato, e ver algumas curiosidades.
 
 
 
@@ -59,7 +59,7 @@ git clone https://github.com/LdFerreira/github-explorer.git
 
 
 Para iniciar **FrontEnd** - Abra o pasta **FrontEnd** no seu terminar e  **execute** os seguintes comandos:
-
+>Necessario yarn instalado
 ```bash
 yarn
 ```
@@ -85,4 +85,4 @@ yarn start
 
 ### :computer: Development
 
-Developed by **Leandro Siqueira Ferreira** and all thanks to **[Rocketseat](https://rocketseat.com.br/)** for the Gostack bootcamp.
+Developed by **Leandro Siqueira Ferreira**.

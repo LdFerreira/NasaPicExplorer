@@ -1,5 +1,32 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
+export const Container = styled.div`
+  display: flex;
+  align-items: stretch;
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+`;
+const apperFromRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(50px)
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0)
+  }
+`;
+export const AnimationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  animation: ${apperFromRight} 1s;
+`;
 export const Header = styled.header`
   display: flex;
   align-items: center;

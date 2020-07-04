@@ -1,9 +1,81 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { shade } from 'polished';
 
 interface FormProps {
   hasError: boolean;
 }
+export const Container = styled.div`
+  display: flex;
+  align-items: stretch;
+`;
+export const Actions = styled.div`
+  display: flex;
+  flex-direction: column;
+  button {
+    flex: 1;
+    background: #ed1c24;
+    border-radius: 0 5px 0 0;
+    padding: 24px;
+    text-decoration: none;
+    border: 0;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s;
+
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: ${shade(0.2, '#ED1C24')};
+    }
+
+    svg {
+      color: #fff;
+    }
+  }
+  button.edit {
+    flex: 1;
+    background: #0066b3;
+    border-radius: 0 0 5px 0;
+    padding: 24px;
+    text-decoration: none;
+    border: 0;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s;
+
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: ${shade(0.2, '#0066b3')};
+    }
+
+    svg {
+      color: #fff;
+    }
+  }
+`;
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+`;
+const apperFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-50px)
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0)
+  }
+`;
+export const AnimationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  animation: ${apperFromLeft} 1s;
+`;
 
 export const Title = styled.h1`
   font-size: 48px;
@@ -15,11 +87,9 @@ export const Title = styled.h1`
 `;
 
 export const Form = styled.form<FormProps>`
-  margin-top: 40px;
-  max-width: 700px;
-
   display: flex;
-
+  margin-top: 24px;
+  margin-bottom: 36px;
   input {
     flex: 1;
     height: 70px;
@@ -42,7 +112,7 @@ export const Form = styled.form<FormProps>`
   button {
     width: 210px;
     height: 70px;
-    background: #04d361;
+    background: #0066b3;
     border-radius: 0px 5px 5px 0px;
     border: 0;
     color: #fff;
@@ -50,7 +120,7 @@ export const Form = styled.form<FormProps>`
     transition: background-color 0.2s;
 
     &:hover {
-      background: ${shade(0.2, '#04d361')};
+      background: ${shade(0.2, '#0066B3')};
     }
   }
 `;
@@ -60,20 +130,15 @@ export const Error = styled.span`
   margin-top: 8px;
 `;
 
-export const Pictures = styled.div`
-  margin-top: 80px;
-  max-width: 700px;
-`;
-
 export const List = styled.div`
   display: flex;
   margin-top: 16px;
+  position: relative;
   &:hover {
-    transform: translateX(10px);
+    transform: translateX(15px);
   }
   a {
     background: #fff;
-    border-radius: 5px;
     width: 100%;
     padding: 24px;
     text-decoration: none;
@@ -87,13 +152,15 @@ export const List = styled.div`
     }
 
     img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
+      position: absolute;
+      width: 20%;
+      height: 100%;
+      left: 0;
+      border-radius: 5px 0 0 5px;
     }
 
     div {
-      margin: 0 16px;
+      margin: 0 16px 0 23%;
       flex: 1;
 
       strong {
@@ -102,34 +169,26 @@ export const List = styled.div`
       }
 
       > p {
-        font-size: 18px;
+        font-size: 12px;
         color: #a8a8b3;
-        margin-top: 4px;
-        text-overflow: ellipsis;
+        margin-top: 5px;
+        max-width: 300ch;
         overflow: hidden;
-        height: 50px;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+      }
+      .date {
+        margin-top: 10px;
+        font-weight: 600;
+        color: #909090;
       }
     }
 
     svg {
       margin-left: auto;
       color: #cbcbd6;
-    }
-  }
-  button {
-    background: #c53030;
-    border-radius: 5px;
-    padding: 24px;
-    text-decoration: none;
-
-    display: flex;
-    align-items: center;
-    transition: transform 0.2s;
-
-    transition: background-color 0.2s;
-
-    &:hover {
-      background: ${shade(0.2, '#c53030')};
     }
   }
 `;

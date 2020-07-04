@@ -1,14 +1,24 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import InputMask from 'react-input-mask';
-import { FiChevronRight, FiTrash } from 'react-icons/fi';
+import { FiChevronRight, FiTrash, FiEdit2 } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import api from '../../services/api';
 import logoImg from '../../assets/logo.svg';
+import ModalForm from '../../components/ModalForm';
 
-import { Title, Form, Pictures, Error, List } from './styles';
+import {
+  Title,
+  Form,
+  Container,
+  Content,
+  Error,
+  List,
+  AnimationContainer,
+  Actions,
+} from './styles';
 
-interface Picture {
+export interface Picture {
   title: string;
   explanation: string;
   date: string;
@@ -18,6 +28,13 @@ interface Picture {
 const Dashboard: React.FC = () => {
   const [newPicture, setNewPicture] = useState('');
   const [inputError, setInputError] = useState('');
+  const [showingModalEdit, setShowingModalEdit] = useState(false);
+  const [dataPicture, setDataPicture] = useState({
+    title: '',
+    explanation: '',
+    date: '',
+    url: '',
+  });
   const [pictures, setPictures] = useState<Picture[]>(() => {
     const storagePictures = localStorage.getItem('@NasaExplorer:pictures');
 
@@ -31,6 +48,11 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     localStorage.setItem('@NasaExplorer:pictures', JSON.stringify(pictures));
   }, [pictures]);
+
+  function handleEditPicture(data: boolean, picture: Picture): void {
+    setShowingModalEdit(data);
+    setDataPicture(picture);
+  }
 
   async function handleAddPicture(
     event: FormEvent<HTMLFormElement>,
@@ -46,7 +68,7 @@ const Dashboard: React.FC = () => {
     }
 
     if (dateStamp < invalidDate) {
-      setInputError('As fotos começaram a set tiradas a partir de 16/06/1995');
+      setInputError('As fotos começaram a ser tiradas a partir de 16/06/1995');
       return;
     }
 
@@ -62,7 +84,7 @@ const Dashboard: React.FC = () => {
       setNewPicture('');
       setInputError('');
     } catch (err) {
-      setInputError('Data invalida, tente novamente');
+      setInputError('Data inválida, tente novamente');
     }
   }
 
@@ -75,39 +97,70 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <img src={logoImg} alt="Github Explorer" />
-      <Title>Explore imagens da nasa</Title>
-
-      <Form hasError={!!inputError} onSubmit={handleAddPicture}>
-        <InputMask
-          value={newPicture}
-          mask="99/99/9999"
-          onChange={(e) => setNewPicture(e.target.value)}
-          placeholder="Digite uma data e descubra a foto que a nasa tirou nesse dia !"
+      {showingModalEdit ? (
+        <ModalForm
+          showModal={showingModalEdit}
+          editButton={(data: boolean, picture: Picture) =>
+            handleEditPicture(data, dataPicture)
+          }
+          picture={dataPicture}
+          setPictures={(picture: Array<Picture>) => setPictures(picture)}
         />
-        <button type="submit">Pesquisar</button>
-      </Form>
+      ) : (
+        ''
+      )}
 
-      {inputError && <Error>{inputError}</Error>}
+      <Container>
+        <Content>
+          <AnimationContainer>
+            <img src={logoImg} alt="Github Explorer" />
+            <Title>Explore imagens da NASA</Title>
 
-      <Pictures>
-        {pictures.map((picture) => (
-          <List key={picture.date}>
-            <button type="button" onClick={() => handleRemovePicture(picture)}>
-              <FiTrash size={36} />
-            </button>
-            <Link to={`/pictures/${picture.date}`}>
-              <img src={picture.url} alt={picture.title} />
-              <div>
-                <strong>{picture.title}</strong>
-                <p>{picture.explanation}</p>
-                <p>{moment(picture.date).format('DD/MM/YYYY')}</p>
-              </div>
-              <FiChevronRight size={20} />
-            </Link>
-          </List>
-        ))}
-      </Pictures>
+            <Form hasError={!!inputError} onSubmit={handleAddPicture}>
+              <InputMask
+                value={newPicture}
+                mask="99/99/9999"
+                onChange={(e) => setNewPicture(e.target.value)}
+                placeholder="Digite uma data e descubra a foto que a NASA tirou nesse dia!"
+              />
+              <button type="submit">Pesquisar</button>
+            </Form>
+
+            {inputError && <Error>{inputError}</Error>}
+
+            {pictures.map((picture) => (
+              <List key={picture.date}>
+                <Link to={`/pictures/${picture.date}`}>
+                  <img src={picture.url} alt={picture.title} />
+                  <div>
+                    <strong>{picture.title}</strong>
+                    <p>{picture.explanation}</p>
+                    <p className="date">
+                      {moment(picture.date).format('DD/MM/YYYY')}
+                    </p>
+                  </div>
+                  <FiChevronRight size={20} />
+                </Link>
+                <Actions>
+                  <button
+                    type="button"
+                    onClick={() => handleRemovePicture(picture)}
+                  >
+                    <FiTrash size={22} />
+                  </button>
+                  <button
+                    className="edit"
+                    type="button"
+                    onClick={() => handleEditPicture(true, picture)}
+                  >
+                    <FiEdit2 size={22} />
+                  </button>
+                </Actions>
+              </List>
+            ))}
+          </AnimationContainer>
+        </Content>
+      </Container>
     </>
   );
 };
