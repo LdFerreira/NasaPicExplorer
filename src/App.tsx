@@ -1,15 +1,13 @@
 import React from 'react';
-import { Router } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 import GlobalStyle from './styles/global';
 
-const history = createBrowserHistory();
 const App: React.FC = () => (
   <>
-    <Router history={history}>
+    <BrowserRouter>
       <Routes />
-    </Router>
+    </BrowserRouter>
     <GlobalStyle />
   </>
 );

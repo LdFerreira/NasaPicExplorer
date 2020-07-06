@@ -1,5 +1,6 @@
 {
   "name": "05-primeiro-projeto-react",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
