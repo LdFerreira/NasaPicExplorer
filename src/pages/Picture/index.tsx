@@ -38,10 +38,6 @@ const Picture: React.FC = () => {
       );
       setPicture(findPicture);
     }
-
-    // api.get(`repos/${params.repository}/issues`).then((response) => {
-    //   setIssues(response.data);
-    // });
   }, [params]);
 
   return (
